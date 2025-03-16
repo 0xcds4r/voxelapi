@@ -136,7 +136,6 @@ function Storage.register(identifier)
     return currentStorage
 end
 
--- Добавление или обновление значения в текущем хранилище
 function Storage.put(key, value)
     local storage = Storage.getCurrentStorage()
     if not storage then
@@ -149,7 +148,6 @@ function Storage.put(key, value)
         return false
     end
 
-    -- Проверяем, поддерживается ли тип значения (строка, число, таблица)
     local value_type = type(value)
     if value_type ~= "string" and value_type ~= "number" and value_type ~= "table" then
         Logger.error("Invalid value type for put: expected string, number or table, got " .. value_type)
@@ -200,7 +198,6 @@ function Storage.get(key)
     end
 end
 
--- Удаление значения из текущего хранилища
 function Storage.remove(key)
     local storage = Storage.getCurrentStorage()
     if not storage then
